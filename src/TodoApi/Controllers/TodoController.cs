@@ -26,7 +26,7 @@ namespace TodoApi.Controllers
             {
                 return HttpNotFound();
             }
-            return new ObjectResult(item);
+             return new ObjectResult(item);
         }
 
         [HttpPost]
@@ -38,6 +38,12 @@ namespace TodoApi.Controllers
             }
             TodoItems.Add(item);
             return CreatedAtRoute("GetTodo", new { controller = "Todo", id = item.Key }, item);
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(string id)
+        {
+            TodoItems.Remove(id);
         }
     }
 }
